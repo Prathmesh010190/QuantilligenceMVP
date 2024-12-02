@@ -1,0 +1,108 @@
+quantilligence-mvp/
+├── frontend/       # Frontend code (React/Framer)
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── App.js
+│   │   ├── index.js
+│   ├── package.json
+│   ├── .env
+│   ├── README.md
+├── backend/        # Backend code (Node.js + Express)
+│   ├── src/
+│   │   ├── routes/
+│   │   │   ├── api.js
+│   │   ├── app.js
+│   ├── package.json
+│   ├── .env
+│   ├── README.md
+├── database/       # Database (JSON or SQL schema for Azure SQL/PostgreSQL)
+│   ├── schema.sql
+│   ├── README.md
+├── README.md       # Overview of the repository
+├── .gitignore      # Files to ignore in GitHub
+├── LICENSE         # License for your code
+{
+  "name": "quantilligence-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  }
+}
+import React from "react";
+
+function App() {
+  return (
+    <div style={{ textAlign: "center", padding: "50px" }}>
+      <h1>Welcome to Quantilligence MVP</h1>
+      <p>Your intelligent platform is live!</p>
+    </div>
+  );
+}
+
+export default App;
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+{
+  "name": "quantilligence-backend",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3"
+  },
+  "scripts": {
+    "start": "node src/app.js"
+  }
+}
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Routes
+app.get("/", (req, res) => {
+  res.send("Welcome to Quantilligence Backend!");
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Backend running on port ${PORT}`);
+});
+CREATE TABLE Users (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    name NVARCHAR(100) NOT NULL,
+    email NVARCHAR(100) UNIQUE NOT NULL,
+    password NVARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT GETDATE()
+);
+git init
+git remote add origin https://github.com/your-username/quantilligence-mvp.git
+git add .
+git commit -m "Initial MVP Commit"
+git branch -M main
+git push -u origin main
